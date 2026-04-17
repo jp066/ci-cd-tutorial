@@ -1,0 +1,24 @@
+name: CI pipeline
+on:
+    pull_request:
+        branches:
+            - main
+            - staging
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        name: Setup, test, and build project
+        env:
+            PORT: 5001
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: install dependencies
+              run: npm ci
+
+            - name: run tests
+              run: npm test
+
+            - name: build project
+              run: npm run build
