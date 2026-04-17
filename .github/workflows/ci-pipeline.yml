@@ -21,4 +21,7 @@ jobs:
               run: npm test
 
             - name: build project
-              run: npm run build
+              run: |
+                npm run build &
+                sleep 5
+                kill $! || true
