@@ -15,6 +15,6 @@ describe("This is the test for the Node Js Web Server", () => {
   test("Should contain 'web server' in response body", async () => {
     const response = await request(app).get("/");
 
-    expect(response.text).toContain("web server");
+    expect(JSON.stringify(response.body)).toContain("web server");
   });
 });

@@ -2,12 +2,12 @@ FROM node:18-slim
 
 WORKDIR /app
 
-COPY package.json .
+COPY package*.json ./
 
-RUN npm install -f
+RUN npm ci
 
 COPY . .
 
 EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD npm start
