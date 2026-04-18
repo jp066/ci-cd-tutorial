@@ -7,8 +7,7 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   res.setHeader("Content-type", "application/json");
-  const data = "João Pedro";
-  res.json({ message: `Hello, ${data}!` });
+  res.json({ message: "Hello, this is a web server!" });
 });
 
 module.exports = app;
