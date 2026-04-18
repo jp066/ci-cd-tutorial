@@ -63,7 +63,8 @@ jobs:
       - name: Deploy to GCP Run - Production environment (If a new release was published from the master branch)
         if: github.event_name == 'release' && github.event.action == 'published' && github.event.release.target_commitish == 'main'
         run: |
-          gcloud run deploy ${{vars.GCR_PROJECT_NAME}} \
+          SERVICE_NAME=$(echo "${{vars.GCR_PROJECT_NAME}}" | tr '[:upper:]' '[:lower:]')
+          gcloud run deploy $SERVICE_NAME \
           --region ${{vars.GCR_REGION}} \
           --image ${{env.IMAGE}} \
           --platform "managed" \
@@ -76,7 +77,8 @@ jobs:
         run: |
           echo "Deploying to staging environment"
           # Deploy service with to staging environment
-          gcloud run deploy ${{vars.GCR_STAGING_PROJECT_NAME}} \
+          SERVICE_NAME=$(echo "${{vars.GCR_STAGING_PROJECT_NAME}}" | tr '[:upper:]' '[:lower:]')
+          gcloud run deploy $SERVICE_NAME \
           --region ${{vars.GCR_REGION}} \
           --image ${{env.IMAGE}} \
           --platform "managed" \
