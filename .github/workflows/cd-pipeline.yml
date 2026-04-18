@@ -69,6 +69,7 @@ jobs:
           --platform "managed" \
           --allow-unauthenticated \
           --tag production \
+          --set-env-vars PORT=8080 \
           --revision-suffix=prod-${{github.sha}}
 
       - name: Deploy to GCP Run - Staging environment
@@ -82,4 +83,5 @@ jobs:
           --platform "managed" \
           --allow-unauthenticated \
           --tag staging \
+          --set-env-vars PORT=8080 \
           --revision-suffix=staging-${{github.sha}}
