@@ -1,24 +1,26 @@
-name: CI pipeline
+name: CI Pipeline to staging/production environment
 on:
-    pull_request:
-        branches:
-            - main
-            - staging
+  pull_request:
+    branches:
+      - main
+      - staging
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        name: Setup, test, and build project
-        env:
-            PORT: 5001
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v3
+  test:
+    runs-on: ubuntu-latest
+    name: Setup, test, and build project
+    env:
+      PORT: 5001
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-            - name: install dependencies
-              run: npm ci
+      - name: install dependencies
+        run: npm ci
 
-            - name: run tests
-              run: npm test
+      - name: run tests
+        run: npm test
 
-            - name: build project
-              run: npm run build
+      - name: build project
+        run: |
+          echo "Run command to build the application if present"
+          npm run build --if-present

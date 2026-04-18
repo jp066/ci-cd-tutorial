@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js",
+    "build": "echo 'Checking integrity...' && node --check index.js",
     "test": "jest"
   },
   "author": "Prince Onukwili",
@@ -20,6 +20,9 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.3",
+    "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
     "supertest": "^7.0.0"
