@@ -82,4 +82,5 @@ jobs:
           --platform "managed" \
           --allow-unauthenticated \
           --tag staging \
+          --timeout 600 \
           --revision-suffix=staging-${{github.sha}}
