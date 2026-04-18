@@ -5,7 +5,7 @@ const app = express();
 
 app.use(cors());
 
-app.get("/", (req, res, next) => {
+app.get("/", (req, res) => {
   res.setHeader("Content-type", "text/html");
   res.send(`
     <html>
@@ -18,7 +18,6 @@ app.get("/", (req, res, next) => {
       <h1>Hello world! I'm speaking with Mr. Ben!...</h1>
     </body>
     `);
-  next();
 });
 
 module.exports = app;
